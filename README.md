@@ -7,7 +7,10 @@
 
 Inverse relations for Laravel Eloquent models.
 
-[Jonathan Reinink](https://github.com/reinink) wrote a great blog post about [optimizing circular relationships in Laravel](https://reinink.ca/articles/optimizing-circular-relationships-in-laravel). This [package](https://github.com/archtechx/laravel-hasmanywithinverse) ran with that idea and implemented it for the `hasMany` relation. This package tries to improve on that by implementing it for the `hasOne` and `morphMany` relations too.
+[Jonathan Reinink](https://github.com/reinink) wrote a great blog post about [optimizing circular relationships in Laravel](https://reinink.ca/articles/optimizing-circular-relationships-in-laravel).
+The package [stancl/laravel-hasmanywithinverse](https://github.com/archtechx/laravel-hasmanywithinverse) ran with that idea and implemented it for the `hasMany` relation. This package improves on that by implementing it for the `hasOne` and `morphMany` relations too.
+
+In short, this package allows you to define inverse relations on your models. This means that you can define a relation on a model that points to another model. This is useful when you have a circular relationship between two models and you want to be able to access the inverse relation without having to load the other model from the database.
 
 ## Installation
 
