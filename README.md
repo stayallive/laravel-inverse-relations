@@ -5,12 +5,12 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/stayallive/laravel-inverse-relations/ci.yaml?branch=master&style=flat-square)](https://github.com/stayallive/laravel-inverse-relations/actions/workflows/ci.yaml)
 [![Total Downloads](https://img.shields.io/packagist/dt/stayallive/laravel-inverse-relations.svg?style=flat-square)](https://packagist.org/packages/stayallive/laravel-inverse-relations)
 
-Inverse relations for Laravel Eloquent models.
+`HasMany`, `HasOne` and `MorphMany` Eloquent relations with inverse hydration.
 
 [Jonathan Reinink](https://github.com/reinink) wrote a great blog post about [optimizing circular relationships in Laravel](https://reinink.ca/articles/optimizing-circular-relationships-in-laravel).
 The package [stancl/laravel-hasmanywithinverse](https://github.com/archtechx/laravel-hasmanywithinverse) ran with that idea and implemented it for the `hasMany` relation. This package improves on that by implementing it for the `hasOne` and `morphMany` relations too.
 
-In short, this package allows you to define inverse relations on your models. This means that you can define a relation on a model that points to another model. This is useful when you have a circular relationship between two models and you want to be able to access the inverse relation without having to load the other model from the database.
+In short, this package allows you to define inverse relations on your models. This means that you can define a relation on a model that points to another model. This is useful when you have a circular relationship between two models and you want to be able to access the inverse relation without having to load the other model from the database potentially saving a lot of database queries.
 
 ## Installation
 
@@ -20,9 +20,9 @@ composer require stayallive/laravel-inverse-relations
 
 ## Usage
 
-Adding the `HasHasManyWithInverseRelation`, `HasHasOneWithInverseRelation` and/or `HasMorphManyWithInverseRelation` trait will provide you with the helper methods to setup the inverse relations.
+Adding the `HasHasManyWithInverseRelation`, `HasHasOneWithInverseRelation` and/or `HasMorphManyWithInverseRelation` traits will provide you with the helper methods to setup the inverse relations.
 
-Check out the test stubs for examples on how to use the trait on your models:
+Check out the test stubs for examples on how to implement the traits on your models to setup the inverse relations:
 
 - [HasMany](tests/Stubs/HasManyWithInverse)
 - [HasOne](tests/Stubs/HasOneWithInverse)

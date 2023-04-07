@@ -1,7 +1,7 @@
 {
     "name": "stayallive/laravel-inverse-relations",
     "type": "library",
-    "description": "HasMany, HasOne and MorphMany Eloquent relations with inverse improvements.",
+    "description": "HasMany, HasOne and MorphMany Eloquent relations with inverse hydration.",
     "keywords": [
         "laravel",
         "eloquent",
