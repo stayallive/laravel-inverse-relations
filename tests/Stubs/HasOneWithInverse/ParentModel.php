@@ -3,7 +3,7 @@
 namespace Tests\Stubs\HasOneWithInverse;
 
 use Illuminate\Database\Eloquent\Model;
-use Stayallive\Laravel\Eloquent\Relations\HasOneWithInverseRelation;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Stayallive\Laravel\Eloquent\Relations\HasHasOneWithInverseRelation;
 
 /**
@@ -19,8 +19,9 @@ class ParentModel extends Model
     protected $table   = 'test_hasonewithinverse_parents';
     protected $guarded = [];
 
-    public function child(): HasOneWithInverseRelation
+    public function child(): HasOne
     {
+        // The `parent` argument (second) is the name of the inverse relationship as defined in the ChildModel
         return $this->hasOneWithInverse(ChildModel::class, 'parent', 'parent_id');
     }
 }

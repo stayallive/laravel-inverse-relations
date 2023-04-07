@@ -3,7 +3,7 @@
 namespace Tests\Stubs\MorphManyWithInverse;
 
 use Illuminate\Database\Eloquent\Model;
-use Stayallive\Laravel\Eloquent\Relations\MorphManyWithInverseRelation;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stayallive\Laravel\Eloquent\Relations\HasMorphManyWithInverseRelation;
 
 /**
@@ -19,8 +19,9 @@ class PostModel extends Model
     protected $table   = 'test_morphmanywithinverse_posts';
     protected $guarded = [];
 
-    public function comments(): MorphManyWithInverseRelation
+    public function comments(): MorphMany
     {
+        // The `commentable` argument (second) is the name of the inverse relationship as defined in the CommentModel
         return $this->morphManyWithInverse(CommentModel::class, 'commentable');
     }
 }

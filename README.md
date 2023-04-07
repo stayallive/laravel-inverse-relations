@@ -19,27 +19,11 @@ composer require stayallive/laravel-inverse-relations
 
 Adding the `HasHasManyWithInverseRelation`, `HasHasOneWithInverseRelation` and/or `HasMorphManyWithInverseRelation` trait will provide you with the helper methods to setup the inverse relations.
 
-```php
-<?php
+Check out the test stubs for examples on how to use the trait on your models:
 
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-use Stayallive\Laravel\Eloquent\UUID\UsesUUID;
-
-class SomeModel extends Model
-{
-    use UsesUUID;
-
-    /**
-     * This method is not needed but can be used to override which attribute is filled with the UUID.
-     */
-    public function getUUIDAttributeName(): string
-    {
-        return $this->getKeyName();
-    }
-}
-```
+- [HasMany](tests/Stubs/HasManyWithInverse)
+- [HasOne](tests/Stubs/HasOneWithInverse)
+- [MorphMany](tests/Stubs/MorphManyWithInverse)
 
 ## Security Vulnerabilities
 

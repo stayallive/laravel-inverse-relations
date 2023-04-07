@@ -3,7 +3,7 @@
 namespace Tests\Stubs\HasManyWithInverse;
 
 use Illuminate\Database\Eloquent\Model;
-use Stayallive\Laravel\Eloquent\Relations\HasManyWithInverseRelation;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stayallive\Laravel\Eloquent\Relations\HasHasManyWithInverseRelation;
 
 /**
@@ -19,8 +19,9 @@ class ParentModel extends Model
     protected $table   = 'test_hasmanywithinverse_parents';
     protected $guarded = [];
 
-    public function children(): HasManyWithInverseRelation
+    public function children(): HasMany
     {
+        // The `parent` argument (second) is the name of the inverse relationship as defined in the ChildModel
         return $this->hasManyWithInverse(ChildModel::class, 'parent', 'parent_id');
     }
 }
