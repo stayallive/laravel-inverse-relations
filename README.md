@@ -2,7 +2,7 @@
 
 [![Latest Version](https://img.shields.io/github/release/stayallive/laravel-inverse-relations.svg?style=flat-square)](https://github.com/stayallive/laravel-inverse-relations/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/github/workflow/status/stayallive/laravel-inverse-relations/CI/master.svg?style=flat-square)](https://github.com/stayallive/laravel-inverse-relations/actions/workflows/ci.yaml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/stayallive/laravel-inverse-relations/ci.yaml?branch=master&style=flat-square)](https://github.com/stayallive/laravel-inverse-relations/actions/workflows/ci.yaml)
 [![Total Downloads](https://img.shields.io/packagist/dt/stayallive/laravel-inverse-relations.svg?style=flat-square)](https://packagist.org/packages/stayallive/laravel-inverse-relations)
 
 Inverse relations for Laravel Eloquent models.
