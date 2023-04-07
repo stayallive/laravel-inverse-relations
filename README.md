@@ -28,6 +28,27 @@ Check out the test stubs for examples on how to use the trait on your models:
 - [HasOne](tests/Stubs/HasOneWithInverse)
 - [MorphMany](tests/Stubs/MorphManyWithInverse)
 
+## Caveats
+
+Because the inverse relation stores the parent by reference (not cloned), you need to be careful when you are using the relation since you will be modifying the parent model. This is nothing new to this package since eager loading does the same thing but I thought to mention it since it could catch you off guard.
+
+There is one other downside to the inverse relation being stored as a reference since it creates a circular reference. This means that you cannot recusively serialize the model that has the inverse relation.
+Laravel does this for example when you pass the model in a queued job since the `SerializesModels` trait will also try to store which relations were loaded when the model was queued to load those relations back causing once the job is being processed.
+This causes an infinite loop trying to figure out which relations are loaded recursively, eating up memory until the process is killed by the OS or crashes.
+
+To prevent this you can either pass your model to your job using `$model->withoutRelations()` or you can disable the relations loading on your model by adding the following method to your model:
+
+```php
+    public function getQueueableRelations(): array
+    {
+        return [];
+    }
+```
+
+This disables the collection and loading of relations on the model when it (un-)serialized for the queued job.
+
+Personally I put this in my base model since I never want to load the relations loaded when I push a job on the queue since they are mostly not useful in the context of the job and apart from guarding against circular references this also saves database queries (sometimes a lot) retrieving unused relations.
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within this package, please send an e-mail to Alex Bouma at `alex+security@bouma.me`. All security vulnerabilities will be swiftly addressed.
