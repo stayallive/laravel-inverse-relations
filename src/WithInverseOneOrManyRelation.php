@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait WithInverseOneOrManyRelation
 {
-    protected string $relationToParent;
+    /** @var string */
+    protected $relationToParent;
 
     public function create(array $attributes = [])
     {
