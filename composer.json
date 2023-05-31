@@ -16,8 +16,7 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "laravel/framework": "^9.0|^10"
+        "laravel/framework": "^8|^9|^10"
     },
     "autoload": {
         "psr-4": {
@@ -26,9 +25,9 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.16",
-        "orchestra/testbench": "^8.0",
-        "pestphp/pest": "^2.4",
-        "phpunit/phpunit": "^10.0"
+        "orchestra/testbench": "^6|^7|^8",
+        "pestphp/pest": "^1.23|^2.4",
+        "phpunit/phpunit": "^9|^10"
     },
     "autoload-dev": {
         "psr-4": {
