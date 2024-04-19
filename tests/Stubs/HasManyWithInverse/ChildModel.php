@@ -16,4 +16,9 @@ class ChildModel extends Model
     {
         return $this->belongsTo(ParentModel::class, 'parent_id');
     }
+
+    public function parentModel(): BelongsTo
+    {
+        return $this->belongsTo(ParentModel::class, 'parent_id');
+    }
 }
