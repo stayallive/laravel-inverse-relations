@@ -9,6 +9,7 @@ use Stayallive\Laravel\Eloquent\Relations\HasHasManyWithInverseRelation;
 /**
  * @property int                                      $id
  * @property \Illuminate\Database\Eloquent\Collection $children
+ * @property \Illuminate\Database\Eloquent\Collection $childrenDefaultInverse
  */
 class ParentModel extends Model
 {
@@ -23,5 +24,10 @@ class ParentModel extends Model
     {
         // The `parent` argument (second) is the name of the inverse relationship as defined in the ChildModel
         return $this->hasManyWithInverse(ChildModel::class, 'parent', 'parent_id');
+    }
+
+    public function childrenDefaultInverse(): HasMany
+    {
+        return $this->hasManyWithInverse(ChildModel::class, null, 'parent_id');
     }
 }

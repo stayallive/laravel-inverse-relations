@@ -19,6 +19,17 @@ beforeEach(function () {
     });
 });
 
+test('inverse relationship name can be automatically guessed if not provided', function () {
+    /** @var \Tests\Stubs\HasOneWithInverse\ParentModel $parent */
+    $parent = ParentModel::create([]);
+
+    /** @var \Tests\Stubs\HasOneWithInverse\ChildModel $child */
+    $child = $parent->childDefaultInverse()->create([]);
+
+    expect($child->relationLoaded('parentModel'))->toBeTrue();
+    expect($child->getRelations()['parentModel']->id)->toBe($parent->id);
+});
+
 test('child has the parent relationship automatically set when being created', function () {
     /** @var \Tests\Stubs\HasOneWithInverse\ParentModel $parent */
     $parent = ParentModel::create([]);

@@ -9,6 +9,7 @@ use Stayallive\Laravel\Eloquent\Relations\HasHasOneWithInverseRelation;
 /**
  * @property int                                       $id
  * @property \Tests\Stubs\HasOneWithInverse\ChildModel $child
+ * @property \Tests\Stubs\HasOneWithInverse\ChildModel $childDefaultInverse
  */
 class ParentModel extends Model
 {
@@ -23,5 +24,10 @@ class ParentModel extends Model
     {
         // The `parent` argument (second) is the name of the inverse relationship as defined in the ChildModel
         return $this->hasOneWithInverse(ChildModel::class, 'parent', 'parent_id');
+    }
+
+    public function childDefaultInverse(): HasOne
+    {
+        return $this->hasOneWithInverse(ChildModel::class, null, 'parent_id');
     }
 }
