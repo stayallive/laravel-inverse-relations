@@ -19,6 +19,17 @@ beforeEach(function () {
     });
 });
 
+test('inverse relationship name can be automatically guessed if not provided', function () {
+    /** @var \Tests\Stubs\HasManyWithInverse\ParentModel $parent */
+    $parent = ParentModel::create([]);
+
+    /** @var \Tests\Stubs\HasManyWithInverse\ChildModel $child */
+    $child = $parent->childrenDefaultInverse()->create([]);
+
+    expect($child->relationLoaded('parentModel'))->toBeTrue();
+    expect($child->getRelations()['parentModel']->id)->toBe($parent->id);
+});
+
 test('children have the parent relationship automatically set when being created', function () {
     /** @var \Tests\Stubs\HasManyWithInverse\ParentModel $parent */
     $parent = ParentModel::create([]);
@@ -28,17 +39,6 @@ test('children have the parent relationship automatically set when being created
 
     expect($child->relationLoaded('parent'))->toBeTrue();
     expect($child->getRelations()['parent']->id)->toBe($parent->id);
-});
-
-test('parent relationship can be automatically guessed', function () {
-    /** @var \Tests\Stubs\HasManyWithInverse\ParentModel $parent */
-    $parent = ParentModel::create([]);
-
-    /** @var \Tests\Stubs\HasManyWithInverse\ChildModel $child */
-    $child = $parent->childrenDefaultInverse()->create([]);
-
-    expect($child->relationLoaded('parentModel'))->toBeTrue();
-    expect($child->getRelations()['parentModel']->id)->toBe($parent->id);
 });
 
 test('children have the parent relationship automatically set when being created using create many', function () {

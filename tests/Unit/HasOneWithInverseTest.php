@@ -19,7 +19,7 @@ beforeEach(function () {
     });
 });
 
-test('parent relationship can be automatically guessed', function () {
+test('inverse relationship name can be automatically guessed if not provided', function () {
     /** @var \Tests\Stubs\HasOneWithInverse\ParentModel $parent */
     $parent = ParentModel::create([]);
 

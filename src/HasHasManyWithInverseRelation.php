@@ -8,9 +8,10 @@ trait HasHasManyWithInverseRelation
 {
     public function hasManyWithInverse($related, $inverse = null, $foreignKey = null, $localKey = null): HasManyWithInverseRelation
     {
-        $inverse = $inverse ?: Str::camel(class_basename($this));
         /** @var \Illuminate\Database\Eloquent\Model $this */
-        $instance   = $this->newRelatedInstance($related);
+        $instance = $this->newRelatedInstance($related);
+
+        $inverse    = $inverse ?: Str::camel(class_basename($this));
         $localKey   = $localKey ?: $this->getKeyName();
         $foreignKey = $foreignKey ?: $this->getForeignKey();
 
